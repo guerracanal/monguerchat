@@ -1,0 +1,156 @@
+/** {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}*/
+
+body {
+height: 100%;
+background-color: #dfdfdf;
+background-image: -webkit-linear-gradient(top,#dddbd1,#d2dbdc);
+background-image: linear-gradient(top,#dddbd1,#d2dbdc);
+font-family: Roboto,sans-serif;
+color: #4b4b4b;
+overflow: auto;
+}
+
+.wraper{
+background-color: #009688;
+width: 100%;
+height: 127px;
+content: '';
+}
+
+.content{
+height: calc(100% - 38px);
+margin: 0 auto;
+border-radius: 3px;
+overflow: hidden;
+background-position: top left;
+background-repeat: repeat-x;
+background-color: #f7f7f7;
+}
+
+.chats{
+height: 100%;
+width: 30%;
+overflow: hidden;
+}
+
+.chats header{
+height: 59px;
+width: 100%;
+background-color: #eee;
+box-sizing: border-box;
+padding: 10px;
+}
+
+.chats div{
+overflow-x: hidden;
+overflow-y: scroll;
+}
+.container {
+background-image: url(img/bg-chat.jpg);
+background-color: #e0dad6;
+background-size: cover;
+background-position: center center;
+}
+
+.container header{
+height: 59px;
+width: 100%;
+background-color: #eee;
+box-sizing: border-box;
+padding: 10px;
+}
+
+.container footer{
+width: 100%;
+box-sizing: border-box;
+padding: 10px;
+}
+
+.container div{
+overflow-x: hidden;
+overflow-y: scroll;
+position: relative;
+padding: 17px 9% 8px;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+/*
+.title {
+	font-size: 30px;
+	font-weight: bold;
+	font-family: "Courier New", Monospace;
+	text-shadow: #ccc 2px 2px 1px;
+	padding-bottom: 5px;
+}
+
+.chat{
+	border: 1px solid #ccc;
+	height: 400px;
+	overflow-y: scroll;
+	background-color: white;
+	border-radius: 10px 0 0 0;
+}
+
+.chat div {
+	margin: 10px 12px 15px;
+	line-height: 20px;
+}
+
+.chat .party {
+	font-weight: bold;
+}
+
+.chat .you {
+	color: red;
+}
+
+.chat .other {
+	color: blue;
+}
+
+.chat .text {
+	
+}
+
+.busy {
+	position: absolute;
+	padding: 3px 0;
+	color: #666;
+	display: none;
+	font-size: 11px;
+}
+
+.input {
+	margin-top: 20px;
+}
+
+.input input {
+	vertical-align: top;
+	float: left;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 480px;
+	margin: 0;
+	border-radius: 5px;
+}
+
+.input a {
+	vertical-align: top;
+	float: right;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	background-color: #efefef;
+	padding: 7px 35px;
+	color: black;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.input a:hover {
+	background-color: #ddd;
+	cursor: pointer;
+}*/

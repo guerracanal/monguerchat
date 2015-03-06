@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MonguerChat</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+	<body>
+	<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="js/monguerchat.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script>
+		function showUser(str) {
+			if (str == "") {
+				document.getElementById("txtHint").innerHTML = "";
+				return;
+			}
+			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			}
+		}
+	</script>
+	<div id="cabecera"></div>
+		<div id="wrapper">
+			<div id="contenido">
+				<div id="listado" class="panel" >
+					<header>
+						<div id="logo"></div>
+						<h1>MonguerChat</h1>
+						<div id="links" >
+							<a href="#" id="history">Historial</a>
+							<a href="#" id="free">Borrar</a>
+							<a href="#" id="autor">Autor</a>
+						</div>
+					</header>
+						<div class="scroll" id="contactos">
+						</div>
+				</div>
+				<div id="conversacion" class="panel" style="display:none;">
+					<header>
+						<div id="avatar-conversacion"></div>
+						<h1 id="nombre-contacto"></h1>
+						<div class="busy"></div>
+					</header>
+					<div id="chats" class="scroll">
+						<div class="chat">
+							
+						</div>
+					</div>
+					<footer class="input">
+						<input type="text" placeholder="" />
+					</footer>
+				</div>
+				<div id="home" class="panel" >
+								<h2>MonguerChat alpha v1.5</h2>
+								<span id="session"></span>
+								
+								<ul>Novedades:
+									<li>Personaje Obvio</li>
+									<li>Personaje Chiquito</li>
+									<li>Personaje Minion</li>
+									<li>Randoms mejorados, construyen frases</li>
+									<li>Scroll siempre abajo</li>
+									<li>Avatares en conversación</li>
+									<li>Almacena mensajes de conversaciones en local</li>
+									<li>posibilidad de listar y eliminar historial</li>
+									<li>Solución: Al cambiar de chat cuando esta escribiendo muestra el texto en la siguiente</li>
+									<li>Texto "esta escribiendo..." se oculta al cambiar de conversación</li>
+								</ul>
+								<ul>Incidencias:
+									<li>Problemas resolución</li>
+								</ul>
+								<ul>Proximas mejoras:
+									<li>Personaje Capitán Obvio</li>
+									<li>Mejorar logo monguerchat</li>
+									<li>Apariencia scroll</li>
+									<li>Optimización</li>
+									<li>Encriptar</li>
+									<li>Adwords</li>
+									<li>Datos Autor</li>
+								</ul>
+				</div>
+			</div>
+		</div>
+	
+		
+
+	</body>
+</html>
