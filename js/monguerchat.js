@@ -662,7 +662,7 @@ function clipo(input){
 	
 	if(input=="hola"){
 		frase.push('Hola! ¿puedo ayudarte? ¿puedo ayudarte?');
-		frase.push('Preguntame lo que quieras sabes. Yo te ayudo!');
+		frase.push('Preguntame lo que quieras saber. ¡Yo te ayudo!');
 	}else{
 		busqueda(input, 'wiki', 0);
 	}
