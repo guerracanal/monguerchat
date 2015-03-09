@@ -7,7 +7,7 @@
 	//cargar("bocaseca", "Bocaseca", false);
 	//cargar("ganan", "Gañán", false);
 	//cargar("marlo", "Marlo", false);
-	cargar("baymax", "Baymax", false);
+	cargar("clipo", '"Clipo" El clip del Windows', false);
 	cargar("minion", "Minion", false);
 	cargar("chiquito", "Chiquito de la Calzada", false);
 	//cargar("onofre", "Onofre", false);
@@ -30,6 +30,6 @@
 	$('#autor').click(function(){ autor(); return false; });
 	//$('#session').html(sessionStorage['id']);
 	
-
-	
+	setInterval('mostrarfraseglobal()',2000);
+	 
 });

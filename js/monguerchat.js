@@ -1,6 +1,7 @@
 ﻿var idglobal; 
 var idenvio;
 var fraseglobal;
+var inputglobal;
 
 function cargar (id, nombre, imagen){
 	var line = $('<div class="caja-contacto" id="'+id+'"><div class="contacto"><div class="avatar-contacto"></div><div class="datos-contacto">'+nombre+'</div></div></div>');
@@ -39,7 +40,6 @@ function iniciar(){
 	var delayStart = 1000;
 	var delayEnd = 3000;
 	
-	$('.chat').html('');
 	// initialize
 	//var idselect=id;
 	var chat = $('.chat');
@@ -75,59 +75,6 @@ function iniciar(){
 		}, latency);
 	}
 	
-	// add a new line to the chat
-	var updateChat = function(party, text, storage) {
-		
-		var d = new Date();
-		/*
-		if(window["write_" + id]==null){
-			console.log('creamos variable: '+"write_" + id);
-			window["write_" + id] = new Array();
-		}
-		*/
-		
-		//Grabar el mensaje
-		if(storage==true){
-			console.log("Se graba: "+idenvio+'~~'+party+'~~'+text+'~~'+d);
-			if(window["write_" + idenvio]==null)window["write_" + idenvio] = new Array();
-			window["write_" + idenvio][window["write_" + idenvio].length]=idenvio+'~~'+party+'~~'+text+'~~'+d;
-			/*if(localStorage['write_'+id]==null){
-				console.log('creamos variable local de: '+id);
-			} */
-			localStorage['write_'+idenvio]=JSON.stringify(window["write_" + idenvio]);
-		}
-	
-		var style = 'you';
-		if(party != you) {
-			style = 'other';
-		}
-		
-		//Si el mensaje es para grabar y idenvio==idglobal adelante
-		//si no esta para grabar adelante
-		
-		var line = $('<p class="mensaje '+style+'"> <span class="party"><span class="text"></span></span> <span class="hora">'+d.getHours()	+':'+d.getMinutes()+'</span></p>');
-		
-		if((storage==false)){	
-		
-			line.find('.text').text(text);
-		
-			chat.append(line);
-			
-		}else{
-			if(idenvio==idglobal){
-				line.find('.text').text(text);
-				chat.append(line);
-			}
-			else{
-				console.log("El chat no es para almacenar");
-				//$('.busy').css('display', 'none');
-			} 
-		}
-		
-		$('#chats').stop().animate({ scrollTop: $('#chats').prop("scrollHeight")});
-		
-	
-	}
 	
 	// event binding
 	$('.input').bind('keydown', function(e) {
@@ -142,7 +89,13 @@ function iniciar(){
 	});
 	$('.input a').bind('click', submitChat);
 	
-	
+//	 if(fraseglobal!=null){
+//		 if(idglobal=='baymax'){
+//			 console.log('Hay frase para baymax');
+//			 updateChat(idglobal, fraseglobal, true);
+//		 }
+//	 }
+
 	
 	
 	//Crear el registro de conversacion si no tenia
@@ -176,7 +129,67 @@ function iniciar(){
 		}
 	}
 	
-} 
+}
+
+//add a new line to the chat
+function updateChat(party, text, storage) {
+	if (text=="") return;
+	var you = 'you';
+	var robot = 'other';
+
+	var chat = $('.chat');
+	
+	var d = new Date();
+	/*
+	if(window["write_" + id]==null){
+		console.log('creamos variable: '+"write_" + id);
+		window["write_" + id] = new Array();
+	}
+	*/
+	
+	//Grabar el mensaje
+	if(storage==true){
+		console.log("Se graba: "+idenvio+'~~'+party+'~~'+text+'~~'+d);
+		if(window["write_" + idenvio]==null)window["write_" + idenvio] = new Array();
+		window["write_" + idenvio][window["write_" + idenvio].length]=idenvio+'~~'+party+'~~'+text+'~~'+d;
+		/*if(localStorage['write_'+id]==null){
+			console.log('creamos variable local de: '+id);
+		} */
+		localStorage['write_'+idenvio]=JSON.stringify(window["write_" + idenvio]);
+	}
+
+	var style = 'you';
+	if(party != you) {
+		style = 'other';
+	}
+	
+	//Si el mensaje es para grabar y idenvio==idglobal adelante
+	//si no esta para grabar adelante
+	
+	var line = $('<p class="mensaje '+style+'"> <span class="party"><span class="text"></span></span> <span class="hora">'+d.getHours()	+':'+d.getMinutes()+'</span></p>');
+	
+	if((storage==false)){	
+	
+		line.find('.text').text(text);
+	
+		chat.append(line);
+		
+	}else{
+		if(idenvio==idglobal){
+			line.find('.text').text(text);
+			chat.append(line);
+		}
+		else{
+			console.log("El chat no es para almacenar");
+			//$('.busy').css('display', 'none');
+		} 
+	}
+	
+	$('#chats').stop().animate({ scrollTop: $('#chats').prop("scrollHeight")});
+	
+
+}
+
 
 function history(){
 	alert('Tenemos ' + localStorage.length + ' elementos dentro de Local Storage');
@@ -217,6 +230,8 @@ function chatBot(input, id) {
 	if(id=='gatete') return randomGatete();
 	if(id=='chiquito') return randomChiquito();
 	if(id=='baymax') return baymax(input);
+	if(id=='clipo') return clipo(input);
+
 	
 	if(match('(hi|hello|hey|hola|howdy|ola)(\\s|!|\\.|$)', input)){
 			if(id=='obvio') return randomObvio('hola', input);
@@ -628,78 +643,163 @@ function randomObvio(tema, input){
 
 
 function baymax(input){
+	inputglobal=input;
 	var frase = new Array();
 	
 	if(input=="hola"){
 		frase.push('En una escala del 1 al 10, ¿Cómo calificas tu dolor?');
 		frase.push('BEBE PELUDO! bebe peluuuudo...');
 	}else{
-		/*
-		//console.log("frasee: "+fraseglobal);
-		return busqueda(input);
-		//Todo esperar a que rellene fraseglobal 5seg
-		console.log("despues: "+fraseglobal);
-		//return fraseglobal;
-		*/
-		
-		var url = 'http://es.wikipedia.org/w/api.php?action=opensearch&search='+input+'&callback=?';
-	
-		$.getJSON(url ,
-		{  
-		prop:"text", 
-		uselang:"es"
-		}, function(data){
-			fraseglobal = JSON.stringify(data[2][0]);
-			console.log("antes: "+fraseglobal);
-			return fraseglobal;
-		}
-		);
-		
+		busqueda(input, 'wiki', 0);
 	}
-	/*
 	index = Math.floor(Math.random() * frase.length);
 	return frase[index];
-	*/
 }
 
+function clipo(input){
+	inputglobal=input;
+	var frase = new Array();
+	
+	if(input=="hola"){
+		frase.push('Hola! ¿puedo ayudarte? ¿puedo ayudarte?');
+		frase.push('Preguntame lo que quieras sabes. Yo te ayudo!');
+	}else{
+		busqueda(input, 'wiki', 0);
+	}
+	index = Math.floor(Math.random() * frase.length);
+	return frase[index];
+}
 
-function busqueda(input) {
+function busqueda(input, fuente, i) {
 	console.log("busqueda: "+input);
-	var url = 'http://es.wikipedia.org/w/api.php?action=opensearch&search='+input+'&callback=?';
+	var url;
+	if(fuente=='wiki') url = 'http://es.wikipedia.org/w/api.php?action=opensearch&search='+input+'&callback=?';
+	if(fuente=='lastfm') url= 'http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist='+input+'&format=json&api_key=ade52095db9e6&callback=?';
 	
-	
+	console.log('buscando en: '+url);
 		$.getJSON(url ,
 		{  
 		prop:"text", 
 		uselang:"es"
 		}, function(data){
-			fraseglobal = JSON.stringify(data[2][0]);
-			console.log("antes: "+fraseglobal);
-			return fraseglobal;
+			if(fuente=='wiki')fraseglobal = JSON.stringify(data);
+			console.log("fraseglobal: "+fraseglobal);
 		}
 		);
 }
 
- function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-  }
+function mostrarfraseglobal(){
+	if((fraseglobal!=null)&&(fraseglobal!='')){
+//		if(fraseglobal=='""') fraseglobal='Pensandolo mejor, no me apetece buscar eso';
+		
+		console.log(JSON.parse(fraseglobal));
+		console.log(fraseglobal);
+		
+		var referencias = JSON.parse(fraseglobal)[1];
+		var definiciones = JSON.parse(fraseglobal)[2][0];
 
+		console.log(referencias);
+		console.log(definiciones);
+		
+		if(empty(referencias)){
+			console.log('vacio');
+		}else{
+			console.log('no vacio');
+		}
 
-function random(categoria) {
-	if(categoria == 'frase'){
-		var frase = new Array(20);
-		//calculando el random
-		index = Math.floor(Math.random() * frase.length);
+	
+//		for (i in referencias){
+//			if(referencias[i].indexOf('desambiguación')==-1)
+//				if(i==0){
+//					if(referencias[i]!="") 
+////						updateChat(idglobal, referencias[i]+' es tu consulta. ¡te lo miro!', true);
+//						escribiendo(idglobal, referencias[i]+' es tu consulta. ¡te lo miro!');
+//				}
+//		}
+		
+		console.log('Renfenrencias: '+referencias.length);
+		var buscandofrase = new Array();
+		
+		buscandofrase.push(' es tu consulta. ¡te lo miro!');
+		buscandofrase.push(' es tu consulta. ¡te lo miro!');
+		
+		var index = Math.floor(Math.random() * buscandofrase.length);
+		escribiendo(idglobal, referencias[0]+' '+buscandofrase[index]);
+		if(referencias.length>1) 
+//			updateChat(idglobal, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias, true);
+			escribiendo(idglobal, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias);
 
 		
-		/*
+		console.log(definiciones);
 		
-		*/
-		return frase[index];
+		if(definiciones.indexOf('puede referirse a:')==-1){
+//			updateChat(idglobal, definiciones, true);
+			escribiendo(idglobal, definiciones);
+		}
+
+//		for (i in definiciones){
+//			if(definiciones[i].indexOf('desambiguación')==-1)
+//			updateChat(idglobal, definiciones[i], true);
+//		}
+		
+		
+//		if(fraseglobal.indexOf('puede referirse a:')!=-1) {
+//			
+//		}
+		
+		fraseglobal=null;
 	}
-return 'frase';
 }
+
+function escribiendo(id, texto){
+	// chat aliases
+	var you = 'you';
+	var robot = 'other';
+	
+	// slow reply by 400 to 800 ms
+	var delayStart = 1000;
+	var chat = $('.chat');
+	var waiting = 0;
+	var delayEnd = 3000;
+	
+	var latency = (Math.floor(3000 + delayStart));
+	$('.busy').css('display', 'block');
+	waiting++;
+	setTimeout( function() {
+		updateChat(id, texto, true);
+		if(--waiting == 0) $('.busy').css('display', 'none');
+	}, latency);
+}
+
+function empty(array){
+	console.log('array: '+array.length);
+	console.log(array);
+	for (i in array) {
+		console.log('Elemento: '+array[i]);
+		if(array[i]!='""') return false;
+	}
+	return true;
+}
+
+// function sleep(delay) {
+//    var start = new Date().getTime();
+//    while (new Date().getTime() < start + delay);
+//  }
+
+//function random(categoria) {
+//	if(categoria == 'frase'){
+//		var frase = new Array(20);
+//		//calculando el random
+//		index = Math.floor(Math.random() * frase.length);
+//
+//		
+//		/*
+//		
+//		*/
+//		return frase[index];
+//	}
+//return 'frase';
+//}
 
 
                             
