@@ -1,0 +1,15 @@
+/* TEAM */
+Autor: Jorge Guerra Canal.
+Site: guerracanal.com
+Twitter: @guerracanal
+Location: Gijón, Asturias, España.
+
+/* THANKS */
+Sonia Gonzalez Martin: 
+José Manuel Piedra Fernandez
+
+/* SITE */
+Last update: 2015/03/10
+Standards: HTML5, CSS3
+Components: jQuery, JSON
+Software: Software usado para el desarrollo del site.
