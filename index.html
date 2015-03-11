@@ -5,6 +5,8 @@
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <link rel="stylesheet" type="text/css" href="css/devices.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/default.css" /> -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
 <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -37,30 +39,30 @@
 	<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 	<script type="text/javascript" src="js/monguerchat.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
-<!-- 	<script>
-		function showUser(str) {
-			if (str == "") {
-				document.getElementById("txtHint").innerHTML = "";
-				return;
-			}
-			if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-				xmlhttp = new XMLHttpRequest();
-			}
-		}
- 	</script> -->
+	<script src="js/modernizr.custom.js"></script>
 	<div id="cabecera"></div>
 		<div id="wrapper">
 			<div id="contenido">
 				<div id="listado" class="panel" >
 					<header>
-						<div id="logo"></div>
+						<div class="logo"></div>
 						<h1>MonguerChat</h1>
-						<div id="links" >
+<!-- 						<div id="links" > -->
 <!-- 							<a href="#" id="history">Historial</a> -->
-							<a href="#" id="free">Borrar</a>
-							<a href="#" id="autor">Autor</a>
-						</div>
-					</header>
+<!-- 							<a href="#" id="free">Borrar</a> -->
+<!-- 							<a href="#" id="autor">Autor</a> -->
+<!-- 						</div> -->
+					<div id="dl-menu" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li><a href="#" id="history">Historial</a></li>
+							<li><a href="#" id="free">Borrar</a></li>
+							<li><a href="#" id="autor">Autor</a></li>
+						</ul>
+					</div>
+					<!-- /dl-menuwrapper -->
+
+				</header>
 						<div class="scroll" id="contactos">
 						</div>
 				</div>
@@ -80,17 +82,26 @@
 					</footer>
 				</div>
 				<div id="home" class="panel" >
-<!-- 								<h2>MonguerChat beta v1.7</h2> -->
-								<span id="session"></span>
-								
-								<div id="monguerchat">
-								</div>
+				<div id="barra">
+					<div class="logo"></div>
+					<div id="dl-menu-2" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li><a href="#">Opcion 1</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="monguerchat">
+						<h2>MonguerChat <span id="version">beta v1.8</span></h2>
+					</div>
 				</div>
 			</div>
-			<footer></footer>
+			<footer id="footer"><span>Lorem fistrum condemor te voy a borrar el cerito va usté muy cargadoo.</span></footer>
 		</div>
 	
 		
+	<script src="js/jquery.dlmenu.js"></script>
 
 	</body>
 </html>

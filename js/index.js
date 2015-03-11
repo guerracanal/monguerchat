@@ -32,4 +32,9 @@
 	
 	setInterval('mostrarfraseglobal()',2000);
 	 
+	$( '#dl-menu' ).dlmenu({
+//		animationClasses : { classin : 'animation-class-name', classout : 'animation-class-name' }
+	});
+	
+	$( '#dl-menu-2' ).dlmenu();
 });

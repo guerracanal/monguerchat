@@ -26,6 +26,12 @@ function cargar (id, nombre, imagen){
 		//}
 		console.log("Finaliza con id: "+idglobal);
 	});
+	
+	$( ".boton" ).on( "click", function() {
+		
+	});
+	
+	
 }
 
 function iniciar(){
