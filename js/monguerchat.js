@@ -226,6 +226,14 @@ function autor(){
 	alert('@guerracanal');
 }
 
+function agenda(){
+	
+	$('#listado').css('display', 'block');
+	$('#conversacion').css('display', 'none');
+	$('#barra').css('display', 'block');
+
+}
+
 function chatBot(input, id) {
 	//alert(idselect+': '+id);
 	input = input.toLowerCase();

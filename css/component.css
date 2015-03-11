@@ -83,7 +83,7 @@
 
 @media ( max-width : 800px) {
 	.dl-menuwrapper button {
-		background: #009688;
+		background: transparent;
 	}
 	
 	.dl-menuwrapper button:after {
