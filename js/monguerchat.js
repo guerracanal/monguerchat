@@ -14,6 +14,7 @@ function cargar (id, nombre, imagen){
 	$( "#"+id ).on( "click", function() {
 		idglobal = id;
 		console.log("id seleccionada: "+idglobal);
+		$('.chat').html('');
 		//if(idselect!=''){
 			$('#conversacion').css('display', 'block');
 			if(imagen)$('#avatar-conversacion').css('background-image', 'url(images/'+id+'.png)');
