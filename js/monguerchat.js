@@ -1,38 +1,36 @@
-﻿var idglobal; 
+﻿'use strict';
+
+var idglobal; 
 var idenvio;
 var fraseglobal;
 var inputglobal;
 
-function cargar (id, nombre, imagen){
-	var line = $('<div class="caja-contacto" id="'+id+'"><div class="contacto"><div class="avatar-contacto"></div><div class="datos-contacto">'+nombre+'</div></div></div>');
+function cargar (bot){
+	var line = $('<div class="caja-contacto" id="'+bot.id+'"><div class="contacto"><div class="avatar-contacto"></div><div class="datos-contacto">'+bot.nombre+'</div></div></div>');
 	
 	$('#contactos').append(line);
 	
-	if(imagen)$('#'+id+' .avatar-contacto').css('background-image', 'url("images/'+id+'.png")');
+	if(bot.show)$('#'+bot.id+' .avatar-contacto').css('background-image', 'url('+bot.avatar+')');
 	
 	//click en conversacion
-	$( "#"+id ).on( "click", function() {
-		idglobal = id;
-		console.log("id seleccionada: "+idglobal);
+	$( "#"+bot.id ).on( "click", function() {
+		idglobal = bot.id;
+		console.log("id seleccionada: "+bot.id);
 		$('.chat').html('');
-		//if(idselect!=''){
-			$('#conversacion').css('display', 'block');
-			if(imagen)$('#avatar-conversacion').css('background-image', 'url(images/'+id+'.png)');
-			else $('#avatar-conversacion').css('background-image', 'url(images/avatar.png)');
-			$('#home').css('display', 'none');
-			$('#nombre-contacto').html(nombre);
-			$("div").removeClass('select');
-			$('#'+id).addClass('select');
-			iniciar();
-		//}
-		console.log("Finaliza con id: "+idglobal);
+		$('#conversacion').css('display', 'block');
+		if(bot.avatar)$('#avatar-conversacion').css('background-image', 'url('+bot.avatar+')');
+		else $('#avatar-conversacion').css('background-image', 'url(images/avatar.png)');
+		$('#home').css('display', 'none');
+		$('#nombre-contacto').html(bot.nombre);
+		$("div").removeClass('select');
+		$('#'+bot.id).addClass('select');
+		iniciar();
+		console.log("Finaliza con id: "+bot.id);
 	});
 	
-	$( ".boton" ).on( "click", function() {
+	//$( ".boton" ).on( "click", function() {
 		
-	});
-	
-	
+	//});
 }
 
 function iniciar(){
@@ -123,13 +121,13 @@ function iniciar(){
 			var inicio = window["read_" + idglobal].length-20;
 			if(inicio<0)inicio=0;
 			console.log("Se muestra desde el: "+inicio);
-			for(x=inicio; x<window["read_" + idglobal].length; x++) {
+			for(let x=inicio; x<window["read_" + idglobal].length; x++) {
 				console.log("leido: "+window["read_" + idglobal][x]);
-				var elementos = window["read_" + idglobal][x].split('~~');
+				let elementos = window["read_" + idglobal][x].split('~~');
 				//alert(window["read_" + id][x]);
-				var destinatario=elementos[1];
-				var mensaje=elementos[2];
-				var fecha=elementos[3];
+				let destinatario=elementos[1];
+				let mensaje=elementos[2];
+				let fecha=elementos[3];
 				//alert(destinatario+": "+mensaje);
 				updateChat(destinatario, mensaje, false);
 			}
@@ -234,10 +232,29 @@ function agenda(){
 
 }
 
+function getBot(id){
+	var found = null;
+	botsGlobal.forEach(bot =>{
+		if(id == bot.id){
+			found = bot;
+		}
+	});
+	return found;
+}
+
 function chatBot(input, id) {
-	//alert(idselect+': '+id);
+
+	var bot = getBot(id);
 	input = input.toLowerCase();
-	if(id=='hodor') return randomHodor();
+	var message='';
+	for (let s=0; s<=(Math.floor(Math.random() * 3)); s++) { 
+		message+=bot.frases[Math.floor(Math.random() * bot.frases.length)];
+		message+=' '
+	}
+	
+	return message;
+	
+	/*if(id=='hodor') return randomHodor();
 	if(id=='et') return randomET();
 	if(id=='pikachu') return randomPikachu();
 	if(id=='zombie') return randomZombie();
@@ -303,6 +320,8 @@ function chatBot(input, id) {
 	//return input + "? Eso es verdad y, por lo tanto, verídico. Esto significa que es cierto y no es falso.";
 	
 	return "Este chat estará disponible proximamente";
+
+	*/
 	
 }
 
@@ -727,8 +746,8 @@ function mostrarfraseglobal(){
 //			if(referencias[i].indexOf('desambiguación')==-1)
 //				if(i==0){
 //					if(referencias[i]!="") 
-////						updateChat(idglobal, referencias[i]+' es tu consulta. ¡te lo miro!', true);
-//						escribiendo(idglobal, referencias[i]+' es tu consulta. ¡te lo miro!');
+////						updateChat(bot.id, referencias[i]+' es tu consulta. ¡te lo miro!', true);
+//						escribiendo(bot.id, referencias[i]+' es tu consulta. ¡te lo miro!');
 //				}
 //		}
 		
@@ -739,22 +758,22 @@ function mostrarfraseglobal(){
 		buscandofrase.push(' es tu consulta. ¡te lo miro!');
 		
 		var index = Math.floor(Math.random() * buscandofrase.length);
-		escribiendo(idglobal, referencias[0]+' '+buscandofrase[index]);
+		escribiendo(bot.id, referencias[0]+' '+buscandofrase[index]);
 		if(referencias.length>1) 
-//			updateChat(idglobal, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias, true);
-			escribiendo(idglobal, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias);
+//			updateChat(bot.id, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias, true);
+			escribiendo(bot.id, 'Tiene mucho intringulis, puedes estar refiriendote a algo de todo esto: '+referencias);
 
 		
 		console.log(definiciones);
 		
 		if(definiciones.indexOf('puede referirse a:')==-1){
-//			updateChat(idglobal, definiciones, true);
-			escribiendo(idglobal, definiciones);
+//			updateChat(bot.id, definiciones, true);
+			escribiendo(bot.id, definiciones);
 		}
 
 //		for (i in definiciones){
 //			if(definiciones[i].indexOf('desambiguación')==-1)
-//			updateChat(idglobal, definiciones[i], true);
+//			updateChat(bot.id, definiciones[i], true);
 //		}
 		
 		
