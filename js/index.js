@@ -1,6 +1,6 @@
-﻿ 
+﻿var botsGlobal = [];
  $(function() {
-	
+	/*
 	cargar("obvio", "Cápitan Obvio", true);
 	cargar("hodor", "Hodor", true);
 	cargar("pikachu", "Pikachu", true);
@@ -24,6 +24,23 @@
 	//cargar("gallu","Gallu", false);
 	//cargar("heisemberg","Heisemberg", false);
 	cargar("gatete", "Gatete", true);
+	*/
+
+	getBots()
+		.then(bots =>{
+			console.log(bots);
+			bots.forEach(bot =>{
+				console.log(bot.nombre);
+				if(bot.show){
+					cargar(bot);
+					botsGlobal.push(bot);
+				}
+			});
+		});
+	 
+	function getBots(){
+		return $.getJSON("bots.json");;
+	}
 	
 	$('#free').click(function(){ free(); return false; });
 	$('#history').click(function(){ history(); return false; });
