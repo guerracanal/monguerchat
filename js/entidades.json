@@ -1,0 +1,101 @@
+{
+    "characters":[
+        {
+        "id": "HODOR",
+        "name": "Hodor",
+        "avatar": "hodor",
+        "phrases": ["HODOR1","HODOR2","HODOR3","HODOR4","HODOR5","HODOR6","HODOR7","HODOR8","HODOR9","HODOR10","HODOR11","HODOR12","HODOR13","HODOR14","HODOR15","HODOR16","HODOR17","HODOR18","HODOR19","HODOR20","HODOR21","HODOR22","HODOR23","HODOR24","HODOR25","HODOR26","HODOR27"]
+        }
+    ],
+
+    "phrases": [{
+        "id": "HODOR1",
+        "text": "Hodor! Hodor hodor, "
+    },{
+        "id": "HODOR2",
+        "text": "Hodor hodor HODOR! Hodor "
+    },{
+        "id": "HODOR3",
+        "text": "Hodor, hodor. Hodor. Hodor "
+    },{
+        "id": "HODOR4",
+        "text": "Hodor!! "
+    },{
+        "id": "HODOR5",
+        "text": "Hodor. Hodor "
+    },{
+        "id": "HODOR6",
+        "text": "Hodor "
+    },{
+        "id": "HODOR7",
+        "text": "Hodor - hodor "
+    },{
+        "id": "HODOR8",
+        "text": "HODOR hodor, hodor "
+    },{
+        "id": "HODOR9",
+        "text": "hodor "
+    },{
+        "id": "HODOR10",
+        "text": "hodor, hodor. Hodor "
+    },{
+        "id": "HODOR11",
+        "text": "hodor... Hodor hodor "
+    },{
+        "id": "HODOR12",
+        "text": "hodor "
+    },{
+        "id": "HODOR13",
+        "text": "hodor hodor "
+    },{
+        "id": "HODOR14",
+        "text": "hodor, hodor "
+    },{
+        "id": "HODOR15",
+        "text": "hodor. "
+    },{
+        "id": "HODOR16",
+        "text": "hodor? "
+    },{
+        "id": "HODOR17",
+        "text": "hodor hodor! "
+    },{
+        "id": "HODOR18",
+        "text": "hodor?! "
+    },{
+        "id": "HODOR19",
+        "text": "hodor, hodor, hodor hodor. "
+    },{
+        "id": "HODOR20",
+        "text": "hodor. Hodor. "
+    },{
+        "id": "HODOR21",
+        "text": "Hoooodor "
+    },{
+        "id": "HODOR22",
+        "text": "Hodor?! Hooodooooor!! "
+    },{
+        "id": "HODOR23",
+        "text": "Hodor Hodor, hodor. "
+    },{
+        "id": "HODOR24",
+        "text": "Hodor "
+    },{
+        "id": "HODOR25",
+        "text": "Hooooodor Hodor Hooooodor "
+    },{
+        "id": "HODOR26",
+        "text": "Hooodor Hodor? "
+    },{
+        "id": "HODOR27",
+        "text": "HOOOODOR! "
+    }],
+
+    "chat": [{
+        "id" : "",
+        "date": "",
+        "text": "",
+        "character": "",
+        "you": false
+    }]
+}
